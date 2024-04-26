@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import api from './api'; // Import the api instance
+import CreateNote from './components/CreateNote'
+import EditNote from './components/EditNote'
+import {BrowserRouter as Router , Route,Routes} from 'react-router-dom'
+import NoteList from './components/NoteList';
+const App = () => {
 
-function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+            <Route exact path="/" element={<NoteList/>} />
+            <Route path="/create" element={<CreateNote />} />
+            <Route path="/edit/:id" element = {<EditNote />} />
+      </Routes>
+       
+      </Router>
   );
-}
+
+};
 
 export default App;
